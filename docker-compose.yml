@@ -1,0 +1,9 @@
+services:
+  permission-aware-retrieval:
+    build: .
+    ports: ["8080:8080"]
+    environment:
+      PERMISSION_AWARE_RETRIEVAL_CONFIG: /app/config/development.toml
+      PERMISSION_AWARE_RETRIEVAL_HTTP__HOST: 0.0.0.0
+    volumes:
+      - ./var:/app/var

@@ -1,0 +1,18 @@
+flowchart LR
+  b1["Permission Checker"]
+  b2["Hybrid Retrieval Engine"]
+  b3["Score Fusion Module"]
+  b1 -->|Allowed Document IDs Set, Filter Predicate| b2
+  b2 -->|Candidate Documents| b3
+  b3 -->|Final Context Chunks| End
+
+flowchart TB
+  subgraph happy [Happy path]
+    h_b1["Permission Checker"]
+    h_b2["Hybrid Retrieval Engine"]
+    h_b3["Score Fusion Module"]
+    h_b1 --> h_b2
+    h_b2 --> h_b3
+  end
+  fail["Failure / abstain"]
+  h_b3 -.-> fail

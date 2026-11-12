@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: permission-aware-retrieval-ingress
+  namespace: permission-aware-retrieval
+spec:
+  podSelector:
+    matchLabels: {app.kubernetes.io/name: permission-aware-retrieval}
+  policyTypes: [Ingress]
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels: {kubernetes.io/metadata.name: gateway}
+      ports: [{port: 8080}]

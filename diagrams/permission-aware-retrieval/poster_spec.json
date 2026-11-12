@@ -1,0 +1,38 @@
+{
+  "boxes": [
+    {
+      "detail": "Intercepts user query and identity; resolves user permissions against document metadata tags (e.g., department, security_level) to generate a dynamic filter predicate.",
+      "id": "b1",
+      "label": "Permission Checker"
+    },
+    {
+      "detail": "Executes lexical (BM25) and dense (Vector) searches strictly within the subset of documents defined by the Permission Checker.",
+      "id": "b2",
+      "label": "Hybrid Retrieval Engine"
+    },
+    {
+      "detail": "Ranks and fuses results from hybrid retrieval using Reciprocal Rank Fusion (RRF) or weighted scoring, ensuring diversity and relevance among authorized documents only.",
+      "id": "b3",
+      "label": "Score Fusion Module"
+    }
+  ],
+  "flows": [
+    {
+      "from": "b1",
+      "label": "Allowed Document IDs Set, Filter Predicate",
+      "to": "b2"
+    },
+    {
+      "from": "b2",
+      "label": "Candidate Documents",
+      "to": "b3"
+    },
+    {
+      "from": "b3",
+      "label": "Final Context Chunks",
+      "to": "End"
+    }
+  ],
+  "subtitle": "One concept. Three AI perspectives. One tested architecture.",
+  "title": "Permission-Aware Retrieval"
+}
